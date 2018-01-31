@@ -1,0 +1,42 @@
+package fr.banque;
+
+
+public class CompteASeuilRemunere2 extends CompteRemunere implements ICompteASeuil {
+
+	private CompteASeuil compteASeuil;
+
+	
+	public CompteASeuilRemunere2() {
+		this(-1, 0, 0, 0);
+	}
+
+	
+	public CompteASeuilRemunere2(int unNumero, double unSoldeInitial, double unTaux, double unSeuil) {
+		super(unNumero, unSoldeInitial, unTaux);
+		this.compteASeuil = new CompteASeuil(unNumero, unSoldeInitial, unSeuil);
+	}
+
+	@Override
+	public double getSeuil() {
+		return this.compteASeuil.getSeuil();
+	}
+
+	
+	@Override
+	public void setSeuil(double unSeuil) {
+		this.compteASeuil.setSeuil(unSeuil);
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + " Seuil=" + this.getSeuil();
+	}
+
+	@Override
+	public void retirer(double unMontant) {
+	
+		this.compteASeuil.setSolde(this.getSolde());
+		this.compteASeuil.retirer(unMontant);
+		this.setSolde(this.compteASeuil.getSolde());
+	}
+}

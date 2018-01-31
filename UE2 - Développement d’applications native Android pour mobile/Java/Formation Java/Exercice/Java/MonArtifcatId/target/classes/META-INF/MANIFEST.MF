@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Built-By: aston1005
+Class-Path: mysql-connector-java-5.1.44.jar
+Build-Jdk: 1.8.0_144
+Created-By: Maven Integration for Eclipse
+Main-Class: fr.exo01.SecondExo
+

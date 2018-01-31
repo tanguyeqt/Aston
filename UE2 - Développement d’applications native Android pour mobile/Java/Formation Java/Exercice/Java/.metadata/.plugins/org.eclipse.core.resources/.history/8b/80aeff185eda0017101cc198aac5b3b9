@@ -1,0 +1,41 @@
+package fr.banque;
+
+public class CompteASeuil extends Compte implements ICompteASeuil {
+	private double seuil;
+
+	public CompteASeuil() {
+		this(-1, 0, 0);
+	}
+
+
+	public CompteASeuil(double unSolde, int unNumero, double unSeuil) {
+		super(unSolde, unNumero);
+		this.setSeuil(unSeuil);
+		
+	}
+
+	@Override
+	public double getSeuil() {
+		return this.seuil;
+	}
+
+	@Override
+	public void setSeuil(double unSeuil) {
+		this.seuil = unSeuil;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + " Seuil=" + this.getSeuil();
+	}
+
+	@Override
+	public void retirer(double unMontant) {
+		double simu = this.getSolde() - unMontant;
+		if (simu <= this.getSeuil()) {
+		
+		} else {
+			super.retirer(unMontant);
+		}
+	}
+}

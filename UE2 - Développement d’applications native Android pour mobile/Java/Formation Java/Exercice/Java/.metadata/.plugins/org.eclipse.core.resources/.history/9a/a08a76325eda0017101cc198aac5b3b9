@@ -1,0 +1,14 @@
+package fr.banque;
+
+public interface ICompteASeuil {
+
+	public abstract void retirer(double unMontant);
+
+	
+	public abstract double getSeuil();
+
+	
+	public abstract void setSeuil(double unSeuil);
+
+}
+

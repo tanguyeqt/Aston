@@ -1,0 +1,8 @@
+package fr.bdd;
+import java.sql.*;
+
+public class TestDB01 {
+
+	
+	
+}

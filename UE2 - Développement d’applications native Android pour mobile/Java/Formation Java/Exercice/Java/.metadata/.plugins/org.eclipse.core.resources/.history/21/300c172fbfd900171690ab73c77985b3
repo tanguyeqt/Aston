@@ -1,0 +1,11 @@
+package fr.banque;
+
+public class CompteRemenuere extends Compte {
+
+	
+	private double taux;
+	
+	
+}
+
+

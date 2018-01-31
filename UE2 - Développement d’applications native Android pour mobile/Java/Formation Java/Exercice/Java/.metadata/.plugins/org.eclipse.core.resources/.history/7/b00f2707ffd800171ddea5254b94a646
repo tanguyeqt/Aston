@@ -1,0 +1,14 @@
+
+public class Run {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Point p = new Point2D();
+		p.setY(15);
+		p.setX(25);
+		
+
+	}
+
+}

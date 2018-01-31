@@ -1,0 +1,14 @@
+package fr.exemple;
+
+public class Chat {
+		private String nom;
+		private int poids;
+		
+	
+		public Chat(){
+			this.nom = nom;
+			this.poids = poids;
+			
+			
+			}
+}

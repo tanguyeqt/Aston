@@ -1,0 +1,44 @@
+package fr.banque;
+
+public class CompteRemunere extends Compte implements ICompteRemunere {
+	private double taux;
+
+	
+	public CompteRemunere() {
+		this(-1, 0, 0);
+	}
+
+	public CompteRemunere(int unNumero, double unSoldeInitial, double unTaux) {
+		super();
+		this.setTaux(unTaux);
+	}
+
+	@Override
+	public double getTaux() {
+		return this.taux;
+	}
+
+	@Override
+	public void setTaux(double unTaux) {
+		if (unTaux < 0 || unTaux >= 1) {
+			throw new IllegalArgumentException("Le taux doit etre entre [0, 1[");
+		}
+		this.taux = unTaux;
+	}
+
+	@Override
+	public double calculerInterets() {
+		return super.getSolde() * this.getTaux();
+	}
+
+	@Override
+	public void verserInterets() {
+		super.ajouter(this.calculerInterets());
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + " Taux=" + this.getTaux();
+	}
+
+}

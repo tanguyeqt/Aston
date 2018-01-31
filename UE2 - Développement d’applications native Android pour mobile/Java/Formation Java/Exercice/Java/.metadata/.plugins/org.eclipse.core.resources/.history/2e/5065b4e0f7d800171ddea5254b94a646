@@ -1,0 +1,27 @@
+package fr.aston.exo;
+
+public class Bonjour {
+
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		
+		//a est une varibale locale a ma méthode main
+		int a = 9;
+		System.out.println("Le resultat est : " + a);
+		
+		double d = 9.5;
+		
+		System.out.println("Le nouveau resultat est : " + d );
+		
+		//pour specifier que l'on veut un float
+		float f =(float)8.8;
+		
+		
+		// s est une variable local a ma methode main
+		// une instance de la classe String
+		String s =  "toto";
+		s.lenght();
+		System.out.println(s);
+	}
+
+}

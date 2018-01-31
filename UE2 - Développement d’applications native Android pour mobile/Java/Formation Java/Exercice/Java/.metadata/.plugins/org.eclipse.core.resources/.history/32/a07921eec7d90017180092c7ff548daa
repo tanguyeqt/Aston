@@ -1,0 +1,52 @@
+package fr.banque;
+
+/**
+ * Ceci est la classe Compte a seuil. <br/>
+ * Il n'est pas possible de descendre en dessous du seuil.
+ */
+public class CompteASeuil extends Compte implements ICompteASeuil {
+	private double seuil;
+
+	/**
+	 * Constructeur. <br/>
+	 * Le seuil par defaut est de 0
+	 */
+	public CompteASeuil() {
+		this(-1, 0, 0);
+	}
+
+
+
+	public CompteASeuil(double solde, int numero) {
+		super(solde, numero);
+		this.seuil = seuil;
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	@Override
+	public double getSeuil() {
+		return this.seuil;
+	}
+
+	@Override
+	public void setSeuil(double unSeuil) {
+		this.seuil = unSeuil;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + " Seuil=" + this.getSeuil();
+	}
+
+	@Override
+	public void retirer(double unMontant) {
+		double simu = this.getSolde() - unMontant;
+		if (simu <= this.getSeuil()) {
+			// Pas bon, on ne fait rien, pour l'instant
+		} else {
+			super.retirer(unMontant);
+		}
+	}
+}

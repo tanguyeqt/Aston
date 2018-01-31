@@ -1,0 +1,70 @@
+package fr.dessin.Point2D;
+
+public class Point3D extends Point2D {
+	private int z;
+	
+	
+	public Point3D() {
+		this (0,0,0) ;
+	}
+	
+	public Point3D(int vX, int vY, int vZ) {
+		super(vX, vY);
+		this.setZ(vZ);
+}
+	
+	public void setZ(int dZ) {
+		this.z = dZ;
+	}
+	
+	public int getZ () {
+		return this.z;
+	}
+	
+	public void translater (int dX, int dY, int dZ) {
+		super.translate(dX, dY);
+		this.setZ(this.getZ() + dZ);
+		
+				
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append(super.toString());
+		
+		s.delete(s.length() - 1, s.length());
+	
+		s.append(" z=").append(this.getZ());
+		return s.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		return (this.getClass() + "_" + this.getX() + "_" + this.getY() + "_" + this.getZ()).hashCode();
+
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null) {
+			return false;
+		}
+		if (o instanceof Point3D) {
+			Point3D p2 = (Point3D) obj;
+			return this.getX() == other.getX() && this.getY() == other.getY() && this.getZ() == other.getZ();
+		}
+		return false;
+	}
+
+	
+
+
+	
+	
+	
+	
+}

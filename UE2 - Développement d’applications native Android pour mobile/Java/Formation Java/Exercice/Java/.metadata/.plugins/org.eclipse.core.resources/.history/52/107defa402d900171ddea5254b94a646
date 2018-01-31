@@ -1,0 +1,13 @@
+package fr.dessin.Point2D;
+
+public class Point3D extends Point2D {
+	private int z;
+	
+	
+	public Point3D() {
+		this.z = 0 ; 
+	}
+	
+	public Point3D(int vX, int vY, int vZ)
+
+}

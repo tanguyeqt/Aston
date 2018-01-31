@@ -1,0 +1,13 @@
+package fr.aston.exo;
+
+public class Bonjour {
+
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		
+		//a est une varibale locale a ma méthode main
+		int a;
+		System.out.println("resultat" + a)
+	}
+
+}

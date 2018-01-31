@@ -1,0 +1,92 @@
+package fr.bdd;
+
+import java.sql.*;
+
+
+public class TestDB01 {
+
+	/**
+	 * Methode de lancement.
+	 *
+	 * @param args
+	 *            ne sert pas ici.
+	 */
+	public static void main(String[] args) {
+		// Nom du driver pour acceder a la base de donnees.
+		// Lire la documentation associee a sa base de donnees pour le connaitre
+		final String dbDriver = "com.mysql.jdbc.Driver";
+		// URL d'access a la base de donnees.
+		// ?useSSL=false pour la version 5.7+ de MySQL
+		// Afin d'eviter le warning SSL
+		final String dbUrl = "jdbc:mysql://localhost/banque?useSSL=false";
+		// Login d'access a la base de donnees.
+		final String dbLogin = "root";
+		// Mot de passe d'access a la base de donnees.
+		final String dbPwd = "";
+
+		// 1]
+		// Chargement de la classe driver du SGBD
+		try {
+			Class.forName(dbDriver);
+		} catch (Exception cnf) {
+			cnf.printStackTrace();
+			System.exit(-1);
+		}
+
+		Connection connection = null;
+		Statement request = null;
+		ResultSet resultat = null;
+
+		try {
+			// 2]
+			// Ouverture d'une connexion vers la base
+			connection = DriverManager.getConnection(dbUrl, dbLogin, dbPwd);
+
+			// 3]
+			// Creation de l'objet de requete
+			request = connection.createStatement();
+
+			// 4]
+			// Envoie de la requete et recuperation du resultat
+			resultat = request.executeQuery("select nom, prenom from utilisateur");
+
+			// 5]
+			// Parcours du resultat, toujours commencer par un .next
+			while (resultat.next()) {
+				String nom = resultat.getString("nom");
+				String prenom = resultat.getString("prenom");
+				// ou, en utilisant les id de colonnes [! Commence a 1 !}
+				// String nom = resultat.getString(1);
+				// String prenom = resultat.getString(2);
+				System.out.println(nom + " " + prenom);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// Tres IMPORTANT, on ferme tout
+			if (resultat != null) {
+				try {
+					resultat.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (request != null) {
+				try {
+					request.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+	}
+
+}

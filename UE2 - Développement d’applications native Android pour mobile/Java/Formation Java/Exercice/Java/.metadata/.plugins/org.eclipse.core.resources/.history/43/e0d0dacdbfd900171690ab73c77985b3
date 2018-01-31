@@ -1,0 +1,32 @@
+package fr.banque;
+
+public class CompteRemenuere extends Compte {
+
+	
+	private double taux;
+
+	public CompteRemenuere() {
+		this(-1, 0, 0);
+	}
+
+	public CompteRemenuere(double solde, int numero, double taux) {
+		super(solde, numero);
+		this.taux = taux;
+	}
+
+	public double getTaux() {
+		return taux;
+	}
+
+	public void setTaux(double taux) {
+		this.taux = taux;
+	}
+	
+	public double verserInterets() {
+		return this.setSolde(taux * solde );
+	}
+	
+	
+}
+
+

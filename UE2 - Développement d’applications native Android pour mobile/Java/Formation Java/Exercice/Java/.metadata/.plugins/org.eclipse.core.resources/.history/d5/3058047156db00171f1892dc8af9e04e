@@ -1,0 +1,455 @@
+package fr.bdd;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
+
+import fr.banque.Client;
+import fr.banque.Compte;
+import fr.banque.CompteASeuil;
+import fr.banque.CompteASeuilRemunere;
+import fr.banque.CompteRemunere;
+import fr.banque.Operation;
+
+
+public class TestDB02 {
+
+	private Connection cxt;
+
+	
+	public TestDB02(String aDriverName) throws SQLException {
+		try {
+			Class.forName(aDriverName);
+		} catch (Exception cnf) {
+			throw new SQLException("Impossible de charger le driver '" + aDriverName + "'", cnf);
+		}
+	}
+
+	
+	public void seConnecter(String aUrl, String aLogin, String aPassword) throws SQLException {
+		this.cxt = DriverManager.getConnection(aUrl, aLogin, aPassword);
+	}
+
+	public void seDeconnecter() {
+		try {
+			if (this.cxt != null) {
+				this.cxt.close();
+			}
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
+	}
+
+	
+	private final void closeAll(ResultSet resultat, Statement request) {
+		
+		if (resultat != null) {
+			try {
+				resultat.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (request != null) {
+			try {
+				request.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	
+	public int authentifier(String unLogin, String unMdp) throws SQLException {
+		if (this.cxt != null && !this.cxt.isClosed()) {
+			PreparedStatement request = null;
+			ResultSet resultat = null;
+			try {
+				
+				request = this.cxt.prepareStatement("select id, password from utilisateur where login=?");
+				request.setString(1, unLogin);
+
+				
+				resultat = request.executeQuery();
+
+				
+				while (resultat.next()) {
+					Integer id = resultat.getInt("id");
+					boolean noid = resultat.wasNull();
+					String password = resultat.getString("password");
+					if (noid) {
+						return -1;
+					}
+					return password == unMdp || password.equals(unMdp) ? id : -2;
+				}
+				return -1;
+			} finally {
+				this.closeAll(resultat, request);
+			}
+		} else {
+			throw new SQLException("Connexion invalide!");
+		}
+	}
+
+	
+	public void afficherNomPrenomUtilisateur() throws SQLException {
+		if (this.cxt != null && !this.cxt.isClosed()) {
+			Statement request = null;
+			ResultSet resultat = null;
+			try {
+				
+				request = this.cxt.createStatement();
+
+				
+				resultat = request.executeQuery("select nom, prenom from utilisateur");
+
+				
+				while (resultat.next()) {
+					String nom = resultat.getString("nom");
+					String prenom = resultat.getString("prenom");
+					
+					System.out.println(nom + " " + prenom);
+				}
+			} finally {
+				this.closeAll(resultat, request);
+			}
+
+		} else {
+			throw new SQLException("Connexion invalide!");
+		}
+	}
+
+	
+	public void afficherIdComptesUtilisateur(int unUtilisateurId) throws SQLException {
+		if (this.cxt != null && !this.cxt.isClosed()) {
+			PreparedStatement request = null;
+			ResultSet resultat = null;
+			try {
+				
+				request = this.cxt.prepareStatement(
+						"select cp.id from compte as cp, utilisateur as client where client.id=? and cp.utilisateurId=client.id");
+				
+				request.setInt(1, unUtilisateurId);
+
+				
+				resultat = request.executeQuery();
+
+				
+				while (resultat.next()) {
+					Integer idCp = resultat.getInt("id");
+					System.out.println(idCp);
+				}
+			} finally {
+				this.closeAll(resultat, request);
+			}
+
+		} else {
+			throw new SQLException("Connexion invalide!");
+		}
+	}
+
+	
+	public void afficherIdOperationComptes(int unCompteId) throws SQLException {
+		if (this.cxt != null && !this.cxt.isClosed()) {
+			PreparedStatement request = null;
+			ResultSet resultat = null;
+			try {
+				
+				request = this.cxt.prepareStatement(
+						"select op.id from operation as op, compte as cp where cp.id=? and op.compteId=cp.id");
+			
+				request.setInt(1, unCompteId);
+
+			
+				resultat = request.executeQuery();
+
+				
+				while (resultat.next()) {
+					Integer idOp = resultat.getInt("id");
+					System.out.println(idOp);
+				}
+			} finally {
+				this.closeAll(resultat, request);
+			}
+
+		} else {
+			throw new SQLException("Connexion invalide!");
+		}
+	}
+
+	
+	public List<Operation> selectOperation(int unCompteId) throws SQLException {
+		return this.selectOperation(unCompteId, null, null, null);
+	}
+
+	
+	public List<Operation> selectOperation(int unCompteId, Date dateDeb, Date dateFin, Boolean creditDebit)
+			throws SQLException {
+		List<Operation> listeOperation = new ArrayList<Operation>();
+		if (this.cxt != null && !this.cxt.isClosed()) {
+			PreparedStatement request = null;
+			ResultSet resultat = null;
+			try {
+				StringBuilder requete = new StringBuilder();
+				requete.append("select * from operation where compteId=?");
+				if (dateDeb != null) {
+					requete.append(" and date >= ?");
+				}
+				if (dateFin != null) {
+					
+					requete.append(" and date < DATE_ADD(?, INTERVAL 1 DAY)");
+				}
+				if (creditDebit != null) {
+					if (creditDebit.booleanValue()) {
+						requete.append(" and montant >= 0");
+					} else {
+						requete.append(" and montant <= 0");
+					}
+				}
+				requete.append(" order by date desc");
+			
+				request = this.cxt.prepareStatement(requete.toString());
+				int idParam = 1;
+				request.setInt(idParam, unCompteId);
+				idParam++;
+				if (dateDeb != null) {
+					request.setDate(idParam, dateDeb);
+					idParam++;
+				}
+				if (dateFin != null) {
+					request.setDate(idParam, dateFin);
+					idParam++;
+				}
+				resultat = request.executeQuery();
+				while (resultat.next()) {
+					Integer id = resultat.getInt("id");
+					String libelle = resultat.getString("libelle");
+					double montant = resultat.getDouble("montant");
+					Timestamp date = resultat.getTimestamp("date");
+					Integer compteId = resultat.getInt("compteId");
+					listeOperation.add(new Operation(id, libelle, montant, date, compteId));
+				}
+
+			} finally {
+				this.closeAll(resultat, request);
+			}
+
+			return listeOperation;
+		} else {
+			throw new SQLException("Connexion invalide!");
+		}
+	}
+
+	
+	public List<Compte> selectCompte(int unUtilisateurId) throws SQLException {
+		List<Compte> listeCompte = new ArrayList<Compte>();
+		if (this.cxt != null && !this.cxt.isClosed()) {
+			Statement request = null;
+			ResultSet resultat = null;
+			try {
+				
+				request = this.cxt.createStatement();
+				resultat = request.executeQuery("select * from compte where utilisateurId=" + unUtilisateurId);
+				while (resultat.next()) {
+					Integer id = resultat.getInt("id");
+					
+					double solde = resultat.getDouble("solde");
+					double seuil = resultat.getDouble("seuil");
+					
+					
+					boolean pasDeDecouver = resultat.wasNull();
+					double taux = resultat.getDouble("taux");
+					boolean pasDeTaux = resultat.wasNull();
+					Compte cpt = null;
+					if (pasDeDecouver && pasDeTaux) {
+						cpt = new Compte(id, solde);
+					} else if (pasDeDecouver && !pasDeTaux) {
+						cpt = new CompteRemunere(id, solde, taux);
+					} else if (!pasDeDecouver && pasDeTaux) {
+						cpt = new CompteASeuil(id, solde, seuil);
+					} else {
+						cpt = new CompteASeuilRemunere(id, solde, taux, seuil);
+					}
+					cpt.setLibelle(resultat.getString("libelle"));
+					listeCompte.add(cpt);
+				}
+
+			} finally {
+				this.closeAll(resultat, request);
+			}
+
+			return listeCompte;
+		} else {
+			throw new SQLException("Connexion invalide!");
+		}
+	}
+
+	
+	public List<Client> selectUtilisateur() throws SQLException {
+		List<Client> listeClient = new ArrayList<Client>();
+		if (this.cxt != null && !this.cxt.isClosed()) {
+			Statement request = null;
+			ResultSet resultat = null;
+			try {
+				
+				request = this.cxt.createStatement();
+				resultat = request.executeQuery("select * from utilisateur");
+				while (resultat.next()) {
+					Integer id = resultat.getInt("id");
+					String nom = resultat.getString("nom");
+					String prenom = resultat.getString("prenom");
+					Date dateNaissance = resultat.getDate("dateDeNaissance");
+					int age = -1;
+					if (dateNaissance != null) {
+						
+						Calendar c = Calendar.getInstance();
+						c.setTimeInMillis(System.currentTimeMillis());
+						int anneeMaintenant = c.get(Calendar.YEAR);
+						c.setTime(dateNaissance);
+						int anneeNaissance = c.get(Calendar.YEAR);
+						age = anneeMaintenant - anneeNaissance;
+					}
+					listeClient.add(new Client(id, nom, prenom, age));
+				}
+
+				
+				Iterator<Client> iterClient = listeClient.iterator();
+				while (iterClient.hasNext()) {
+					Client client = iterClient.next();
+					List<Compte> listeCpt = this.selectCompte(client.getNumero());
+					Iterator<Compte> iterCompte = listeCpt.iterator();
+					while (iterCompte.hasNext()) {
+						client.ajouterCompte(iterCompte.next());
+					}
+				}
+
+			} finally {
+				this.closeAll(resultat, request);
+			}
+
+			return listeClient;
+		} else {
+			throw new SQLException("Connexion invalide!");
+		}
+	}
+
+	
+	public List<Client> selectUtilisateurV2() throws SQLException {
+		List<Client> listeClient = new ArrayList<Client>();
+		if (this.cxt != null && !this.cxt.isClosed()) {
+			Statement request = null;
+			ResultSet resultat = null;
+			try {
+				
+				request = this.cxt.createStatement();
+				resultat = request.executeQuery(
+						"select id, nom, prenom, YEAR(NOW())-YEAR(dateDeNaissance) as age from utilisateur");
+				while (resultat.next()) {
+					Integer id = resultat.getInt("id");
+					String nom = resultat.getString("nom");
+					String prenom = resultat.getString("prenom");
+					
+					int age = resultat.getInt("age");
+					listeClient.add(new Client(id, nom, prenom, age > 0 ? age : -1));
+				}
+
+				Iterator<Client> iterClient = listeClient.iterator();
+				while (iterClient.hasNext()) {
+					Client client = iterClient.next();
+					List<Compte> listeCpt = this.selectCompte(client.getNumero());
+					Iterator<Compte> iterCompte = listeCpt.iterator();
+					while (iterCompte.hasNext()) {
+						client.ajouterCompte(iterCompte.next());
+					}
+				}
+			} finally {
+				this.closeAll(resultat, request);
+			}
+
+			return listeClient;
+		} else {
+			throw new SQLException("Connexion invalide!");
+		}
+	}
+
+	
+	public void faireVirement(Integer cptSrc, Integer cptDest, Double unMontant) throws SQLException {
+		if (this.cxt != null && !this.cxt.isClosed()) {
+			this.cxt.setAutoCommit(false);
+			Statement request = null;
+			try {
+				
+				request = this.cxt.createStatement();
+				request.executeUpdate("update compte set solde=(solde-" + unMontant + ") where id=" + cptSrc);
+				request.close();
+				request = this.cxt.createStatement();
+				request.executeUpdate("update compte set solde=(solde+" + unMontant + ") where id=" + cptDest);
+				request.close();
+				request = this.cxt.createStatement();
+				request.executeUpdate("insert into operation (libelle, montant, date, compteId) values ('Virement',"
+						+ -unMontant + ",NOW()," + cptSrc + ")");
+				request.close();
+				request = this.cxt.createStatement();
+				request.executeUpdate("insert into operation (libelle, montant, date, compteId) values ('Virement',"
+						+ unMontant + ",NOW()," + cptDest + ")");
+				this.cxt.commit();
+			} catch (SQLException sql) {
+				this.cxt.rollback();
+			
+				throw sql;
+			} finally {
+				this.cxt.setAutoCommit(true);
+				this.closeAll(null, request);
+			}
+
+		} else {
+			throw new SQLException("Connexion invalide!");
+		}
+	}
+
+	
+	public static void main(String[] args) {
+		
+		final String dbDriver = "com.mysql.jdbc.Driver";
+		
+		final String dbUrl = "jdbc:mysql://localhost/banque?useSSL=false";
+		
+		final String dbLogin = "root";
+		
+		final String dbPwd = "root";
+		TestDB02 bd = null;
+		try {
+			bd = new TestDB02(dbDriver);
+			bd.seConnecter(dbUrl, dbLogin, dbPwd);
+			System.out.println("Tous les noms,prenoms utilisateurs");
+			bd.afficherNomPrenomUtilisateur();
+			System.out.println("\nComptes du client 1");
+			bd.afficherIdComptesUtilisateur(1);
+			System.out.println("\nOperations du comptes 12");
+			bd.afficherIdOperationComptes(12);
+
+			
+			System.out.println("\nMapping Objet");
+			List<Client> lClient = bd.selectUtilisateur();
+			for (Client unClient : lClient) {
+				System.out.println(unClient);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (bd != null) {
+				bd.seDeconnecter();
+			}
+		}
+	}
+
+}

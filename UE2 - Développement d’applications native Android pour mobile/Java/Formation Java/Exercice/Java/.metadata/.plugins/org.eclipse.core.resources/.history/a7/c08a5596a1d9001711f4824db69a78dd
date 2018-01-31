@@ -1,0 +1,17 @@
+package fr.Run;
+import fr.banque.*;
+
+
+public class Run {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+			Compte c = new Compte();
+			
+			c.ajouter(45);
+			System.out.println(c.getSolde());
+		
+	}
+
+}

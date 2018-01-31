@@ -1,0 +1,29 @@
+package fr.dessin.Point2D;
+
+public class Point3D extends Point2D {
+	private int z;
+	
+	
+	public Point3D() {
+		this (0,0,0) ;
+	}
+	
+	public Point3D(int vX, int vY, int vZ) {
+		super(vX, vY);
+		this.setZ(vZ);
+}
+	
+	public void setZ(int dZ) {
+		this.z = dZ;
+	}
+	
+	public int getZ (int dZ) {
+		return this.z;
+	}
+	
+	public void translater (int dX, int dY, int dZ) {
+		this.z += dZ;		
+	}
+	
+	
+}

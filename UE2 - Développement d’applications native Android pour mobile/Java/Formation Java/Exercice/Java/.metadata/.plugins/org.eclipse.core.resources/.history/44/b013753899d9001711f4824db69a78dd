@@ -1,0 +1,87 @@
+package fr.dessin.Point2D;
+
+public class Point2D {
+
+		private static int compteur;
+		private int x;
+		private int y;
+		
+		public Point2D () {
+			this(0, 0);
+			
+		}
+		public Point2D(int vX, int vY) {
+			super();
+			this.setX(vX);
+			this.setY(vY);
+			Point2D.compteur++;
+			
+		}
+		
+		
+		
+		public void setX(int valX) {
+			this.x = valX;			
+		}
+		
+		public void setY(int valY) {
+			this.y = valY;
+		}
+		
+		public int getX() {
+			return this.x;
+		}
+		
+		public int getY() {
+			return this.y;
+		}
+		
+		public void afficher() {
+			System.out.println(this.x + " et " + this.y);
+		}
+		
+		public void translate(int dX, int dY) {
+			this.x += dX;
+			this.y += dY;
+			
+		}
+		
+		public static final int getCompteur() {
+			return Point2D.compteur;
+		}
+		
+		public String toString() {
+			StringBuilder builder = new StringBuilder();
+			builder.append(this.getClass().getName());
+			builder.append(" x =");
+			builder.append(this.getX());
+			builder.append(" y =");
+			builder.append(this.getY());		
+			return builder.toString();
+		}
+		
+		
+		@Override
+		public int hashCode() {
+			return (this.getClass() + "_" + this.getX() + "_" + this.getY()).hashCode();
+		}
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj) {
+				return true;
+			}
+			if (obj == null) {
+				return false;
+			}
+			if (obj instanceof Point2D) {
+				Point2D other = (Point2D) obj;
+				return this.getX() == other.getX() && this.getY() == other.getY();
+			}
+			return false;
+		}
+		
+		
+		
+	}
+
+

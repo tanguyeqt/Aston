@@ -1,0 +1,87 @@
+package fr.io;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Classe qui charge les noms et les prenoms. <br/>
+ */
+public class NomPrenomRaederIO {
+	/** Repertoire racine des deux autres fichiers. */
+	private static String ROOT;
+	/** Nom du fichier qui contient les noms. */
+	private static final String FICHIER_NOM = "nom.txt";
+	/** Nom du fichier qui contient les prenoms. */
+	private static final String FICHIER_PRENOM = "prenom.txt";
+
+	/**
+	 * Indique le chemin racine.
+	 *
+	 * @param aRoot
+	 *            le chemin racine.
+	 */
+	public static void setROOT(String aRoot) {
+		NomPrenomReaderIO.ROOT = aRoot;
+	}
+
+	/**
+	 * Lit le fichier et retourne une liste de String qui le represente.
+	 *
+	 * @return la liste representant chaque ligne du fichier
+	 * @throws IOException
+	 *             si un probleme survient
+	 */
+	private static List<String> readFichier(String unNomDeFichier) throws IOException {
+		File fichierNom = new File(NomPrenomReaderIO.ROOT, unNomDeFichier);
+		if (!fichierNom.exists() || !fichierNom.canRead()) {
+			throw new IOException("Probleme d'acces au fichier " + fichierNom);
+		}
+		List<String> resultat = new ArrayList<String>();
+		// Ici on utilise la technique Java 7 pour avoir un finally automatique
+		try (FileReader fileReader = new FileReader(fichierNom);
+				BufferedReader buffered = new BufferedReader(fileReader)) {
+			String ligne;
+			do {
+				ligne = buffered.readLine();
+				ligne = ligne != null ? ligne.trim() : null;
+				if (ligne != null && !ligne.isEmpty()) {
+					resultat.add(ligne);
+				}
+			} while (ligne != null);
+		} catch (Exception e) {
+			// On relance l'exception
+			throw new IOException("Erreur lors de la lecture du fichier " + fichierNom, e);
+		}
+		// Pas de bloc finally ici car on utilise la syntaxe Java 7 pour la
+		// gestion automatique des fermetures de flux
+		return resultat;
+	}
+
+	/**
+	 * Lit le fichier des noms et retourne une liste de String qui le
+	 * represente.
+	 *
+	 * @return la liste des noms
+	 * @throws IOException
+	 *             si un probleme survient
+	 */
+	public static List<String> readNom() throws IOException {
+		return NomPrenomReaderIO.readFichier(NomPrenomReaderIO.FICHIER_NOM);
+	}
+
+	/**
+	 * Lit le fichier des prenoms et retourne une liste de String qui le
+	 * represente.
+	 *
+	 * @return la liste des prenoms
+	 * @throws IOException
+	 *             si un probleme survient
+	 */
+	public static List<String> readPrenom() throws IOException {
+		return NomPrenomReaderIO.readFichier(NomPrenomReaderIO.FICHIER_PRENOM);
+	}
+}

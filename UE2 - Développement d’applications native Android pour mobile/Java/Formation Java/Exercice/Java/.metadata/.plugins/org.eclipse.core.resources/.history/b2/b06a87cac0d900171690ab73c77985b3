@@ -1,0 +1,18 @@
+package fr.banque;
+
+public class CompteASeuil extends Compte{
+	
+	private double seuil;
+	
+	
+	public CompteASeuil() {
+		this(0,0,0);
+	}
+
+
+	public CompteASeuil(double seuil) {
+		super();
+		this.seuil = seuil;
+	}
+
+}

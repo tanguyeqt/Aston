@@ -1,0 +1,87 @@
+package fr.banque;
+
+public class Compte {
+	
+	private double solde;
+	private int numero;
+	
+	
+	
+	
+	public Compte() {
+		this(0, 0);
+	}
+
+	public Compte(double solde, int numero) {		
+		this.solde = solde;
+		this.numero = numero;
+	}
+
+		// TODO Auto-generated constructor stub
+	
+
+	public double getSolde() {
+		return solde;
+	}
+
+	public void setSolde(double solde) {
+		this.solde = solde;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	
+	
+	public void ajouter(double unMontant) {
+		this.setSolde(this.getSolde() + unMontant);		
+	}
+	
+	public void retirer(double unMontant) {
+		this.setSolde(this.getSolde() - unMontant);
+	}
+	
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(" Numero de compte : ");
+		builder.append(this.getNumero());
+		builder.append(" Solde : ");
+		builder.append(this.getSolde());		
+		return builder.toString();
+	}
+	@Override
+	public boolean equals(Object o) {
+		
+		if (this == null) {
+			return true;
+		}
+		if (o == this) {
+			return false;
+		}
+		
+		if (o instanceof Compte) {
+			Compte c = (Compte) o ;
+			return this.getNumero() == c.getNumero();
+			}
+		return false;
+		}
+	@Override
+	public int hashCode() {
+		return (this.getClass().getName() + "_" + this.getNumero()).hashCode();
+	}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+
+

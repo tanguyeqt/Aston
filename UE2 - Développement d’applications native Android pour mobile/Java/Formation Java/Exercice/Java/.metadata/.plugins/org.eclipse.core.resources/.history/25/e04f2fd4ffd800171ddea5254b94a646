@@ -1,0 +1,43 @@
+
+public class Point2D {
+
+	
+		private int x;
+		private int y;
+		
+		public Point2D (x,y) {
+			this(0,0);
+		}
+		
+		public void setX(int valX) {
+			this.x = valX;			
+		}
+		
+		public void setY(int valY) {
+			this.y = valY;
+		}
+		
+		public int getX() {
+			return this.x;
+		}
+		
+		public int getY() {
+			return this.y;
+		}
+		
+		public void afficher() {
+			System.out.println(this.x + " et " + this.y);
+		}
+		
+		public void translate(int dX, int dY) {
+			this.x += dX;
+			this.y += dY;
+			
+		}
+		
+		
+		// TODO Auto-generated method stub
+
+	}
+
+

@@ -1,0 +1,9 @@
+package fr.aston.exo;
+
+public class Bonjour {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

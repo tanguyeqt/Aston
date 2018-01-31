@@ -1,0 +1,20 @@
+<resources>
+
+    <style name="SplashTitle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="HomeButton">
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="HomeGreenButton">
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+</resources>

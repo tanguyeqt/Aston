@@ -1,0 +1,11 @@
+package fr.bdd;
+
+import java.sql.*;
+
+public class TestDB01 {
+
+	public static void main (String[] args) {
+		
+	}
+	
+}

@@ -1,0 +1,20 @@
+package fr.Run;
+import fr.banque.*;
+
+
+public class Run {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Client client = new Client(1, "Dupont", "Henry", 28);
+		
+		Compte c1 = new Compte(2, 56);
+		
+		client.ajouterCompte(c1);
+			
+	
+		
+	}
+
+}

@@ -1,0 +1,18 @@
+package fr.banque;
+
+public class Compte {
+	
+	private double solde;
+	private int numero;
+	
+	
+	public Compte(double solde, int numero) {
+		super();
+		this.solde = solde;
+		this.numero = numero;
+	}
+	
+	
+	
+
+}

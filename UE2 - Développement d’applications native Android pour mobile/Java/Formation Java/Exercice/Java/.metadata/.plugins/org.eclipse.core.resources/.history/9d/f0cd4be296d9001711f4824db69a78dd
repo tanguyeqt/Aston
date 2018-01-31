@@ -1,0 +1,61 @@
+package fr.exemple;
+
+public class Chat {
+		private static String nom;
+		private int poids;
+		private static int nbPattes;
+		
+	
+		public Chat(){
+			this.nom = nom;
+			this.poids = poids;
+			this.nbPattes = nbPattes;
+			
+			
+			
+			}
+
+
+		public String getNom() {
+			return nom;
+		}
+
+
+		public void setNom(String nom) {
+			this.nom = nom;
+		}
+
+
+		public int getPoids() {
+			return poids;
+		}
+
+
+		public void setPoids(int poids) {
+			this.poids = poids;
+		}
+		
+		public boolean faireQQChose(int unParam) {
+			if(unParam ==0) {
+				return false;
+			}
+			return true;
+		}
+		
+		public static int getNbPattes() {
+			System.out.println(nom);
+			return nbPattes;
+		}
+		
+	public static void steNbPattes(int nbPattes) {
+		Chat.nbPattes = nbPattes;
+	}
+		
+		public static void main(String[] args) {
+			Chat c = new Chat("Samy", 10);
+			System.out.println(c.getNom());
+			System.out.println(Chat.getNbPattes());
+			
+		}
+		
+}

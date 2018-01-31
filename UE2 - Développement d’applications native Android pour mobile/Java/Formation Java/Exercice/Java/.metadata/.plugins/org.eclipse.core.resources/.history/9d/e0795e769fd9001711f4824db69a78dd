@@ -1,0 +1,28 @@
+package fr.banque;
+
+public class Client {
+
+	
+		private String nom;
+		private String prenom;
+		private int age;
+		private int numero;
+		
+				public Client() {
+				this(0, null, null, 0);
+			}
+		}
+
+		public Client(int age, String prenom, String nom, int numero) {
+			super();
+			this.nom = nom;
+			this.prenom = prenom;
+			this.age = age;
+			this.numero = numero;
+		}
+		
+		
+	
+	
+	
+}

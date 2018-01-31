@@ -1,0 +1,50 @@
+package fr.Run;
+import fr.dessin.Point2D.Point2D;
+
+public class Run {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		public static void main(String[] args) {
+			Point2D p1 = new Point2D();
+			System.out.println(p1);
+			// Identique a
+			// System.out.println(p1.toString());
+
+			Point2D p2 = new Point2D();
+			System.out.println(p2);
+
+			// == compare les references memoires
+			if (p1 == p2) {
+				System.out.println("p1 == p2");
+			} else {
+				// ici p1 et p2 n'ont pas les memes references memoires
+				// p1 et p2 sont deux instances distincts en memoire
+				System.out.println("p1 != p2");
+			}
+
+			// Maintenant on fait pointer p1 sur p2
+			p1 = p2;
+			if (p1 == p2) {
+				// ici p1 et p2 ont la meme reference memoire
+				System.out.println("p1 == p2");
+			} else {
+				System.out.println("p1 != p2");
+			}
+
+			// Creation d'une instance de Point3D p3
+			Point3D p3 = new Point3D(5, 5, 5);
+			System.out.println(p3);
+			// On retrouve sur p3 toutes les methodes utilisables sur un Point2D
+			p3.setX(25);
+			p3.setY(32);
+			p3.translater(5, 8);
+			// Et en plus celles de Point3D
+			p3.setZ(55);
+			p3.translater(10, 10, 5);
+			// Le toString qui sera appele sera celui de Point3D (le premier trouve)
+			System.out.println(p3);
+		}
+
+}

@@ -1,0 +1,22 @@
+package fr.banque;
+
+public class CompteASeuil extends Compte{
+	
+	private double seuil;
+	
+	
+	public CompteASeuil() {
+		this(0,0,0);
+	}
+
+
+	public CompteASeuil(double solde, int numero) {
+		super(solde, numero);
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	}
+
+}
