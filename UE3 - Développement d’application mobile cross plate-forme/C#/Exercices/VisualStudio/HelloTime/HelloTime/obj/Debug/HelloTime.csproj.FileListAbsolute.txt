@@ -1,0 +1,7 @@
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloTime\HelloTime\bin\Debug\HelloTime.exe.config
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloTime\HelloTime\bin\Debug\HelloTime.exe
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloTime\HelloTime\bin\Debug\HelloTime.pdb
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloTime\HelloTime\obj\Debug\HelloTime.csprojResolveAssemblyReference.cache
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloTime\HelloTime\obj\Debug\HelloTime.csproj.CoreCompileInputs.cache
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloTime\HelloTime\obj\Debug\HelloTime.exe
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloTime\HelloTime\obj\Debug\HelloTime.pdb
