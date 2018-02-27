@@ -1,0 +1,7 @@
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\Calculs\Calculs\bin\Debug\Calculs.exe.config
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\Calculs\Calculs\bin\Debug\Calculs.exe
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\Calculs\Calculs\bin\Debug\Calculs.pdb
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\Calculs\Calculs\obj\Debug\Calculs.csprojResolveAssemblyReference.cache
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\Calculs\Calculs\obj\Debug\Calculs.csproj.CoreCompileInputs.cache
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\Calculs\Calculs\obj\Debug\Calculs.exe
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\Calculs\Calculs\obj\Debug\Calculs.pdb
