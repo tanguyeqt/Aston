@@ -1,0 +1,11 @@
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloWorldTest\HelloWorldTest\bin\Debug\netcoreapp2.0\HelloWorldTest.deps.json
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloWorldTest\HelloWorldTest\bin\Debug\netcoreapp2.0\HelloWorldTest.runtimeconfig.json
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloWorldTest\HelloWorldTest\bin\Debug\netcoreapp2.0\HelloWorldTest.runtimeconfig.dev.json
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloWorldTest\HelloWorldTest\bin\Debug\netcoreapp2.0\HelloWorldTest.dll
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloWorldTest\HelloWorldTest\bin\Debug\netcoreapp2.0\HelloWorldTest.pdb
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloWorldTest\HelloWorldTest\obj\Debug\netcoreapp2.0\HelloWorldTest.csprojResolveAssemblyReference.cache
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloWorldTest\HelloWorldTest\obj\Debug\netcoreapp2.0\HelloWorldTest.csproj.CoreCompileInputs.cache
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloWorldTest\HelloWorldTest\obj\Debug\netcoreapp2.0\HelloWorldTest.AssemblyInfoInputs.cache
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloWorldTest\HelloWorldTest\obj\Debug\netcoreapp2.0\HelloWorldTest.AssemblyInfo.cs
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloWorldTest\HelloWorldTest\obj\Debug\netcoreapp2.0\HelloWorldTest.dll
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\HelloWorldTest\HelloWorldTest\obj\Debug\netcoreapp2.0\HelloWorldTest.pdb
