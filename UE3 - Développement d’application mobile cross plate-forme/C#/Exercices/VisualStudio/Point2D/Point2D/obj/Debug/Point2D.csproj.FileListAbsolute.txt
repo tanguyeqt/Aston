@@ -1,0 +1,7 @@
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\Point2D\Point2D\bin\Debug\Point2D.exe.config
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\Point2D\Point2D\bin\Debug\Point2D.exe
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\Point2D\Point2D\bin\Debug\Point2D.pdb
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\Point2D\Point2D\obj\Debug\Point2D.csprojResolveAssemblyReference.cache
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\Point2D\Point2D\obj\Debug\Point2D.csproj.CoreCompileInputs.cache
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\Point2D\Point2D\obj\Debug\Point2D.exe
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\Point2D\Point2D\obj\Debug\Point2D.pdb
