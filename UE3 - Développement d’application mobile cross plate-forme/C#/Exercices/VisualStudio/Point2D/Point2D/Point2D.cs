@@ -10,6 +10,14 @@ namespace Point2D
     {
         int x, y;
 
+
+
+
+        public Point2D()
+        {
+
+        }
+
         public void Afficher()
         {
 
