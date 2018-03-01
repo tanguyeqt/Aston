@@ -8,15 +8,24 @@ namespace Point2D
 {
     class Point2D
     {
-        int x, y;
+        protected int x, y;
 
 
 
 
         public Point2D()
         {
-
+            x = 0;
+            y = 0;
         }
+
+        public Point2D(int vX, int vY)
+        {
+            this.x = vX;
+            this.y = vY;
+        }
+
+
 
         public void Afficher()
         {

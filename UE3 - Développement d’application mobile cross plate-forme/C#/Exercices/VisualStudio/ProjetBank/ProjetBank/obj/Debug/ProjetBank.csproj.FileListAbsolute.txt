@@ -1,0 +1,7 @@
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\ProjetBank\ProjetBank\bin\Debug\ProjetBank.exe.config
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\ProjetBank\ProjetBank\bin\Debug\ProjetBank.exe
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\ProjetBank\ProjetBank\bin\Debug\ProjetBank.pdb
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\ProjetBank\ProjetBank\obj\Debug\ProjetBank.csprojResolveAssemblyReference.cache
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\ProjetBank\ProjetBank\obj\Debug\ProjetBank.csproj.CoreCompileInputs.cache
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\ProjetBank\ProjetBank\obj\Debug\ProjetBank.exe
+C:\Users\amin\Desktop\Aston\UE3 - Développement d’application mobile cross plate-forme\C#\Exercices\VisualStudio\ProjetBank\ProjetBank\obj\Debug\ProjetBank.pdb

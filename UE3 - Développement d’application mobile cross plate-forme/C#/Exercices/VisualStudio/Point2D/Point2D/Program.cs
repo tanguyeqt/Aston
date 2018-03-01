@@ -20,18 +20,18 @@ namespace Point2D
             p1.Afficher();
 
 
-            Console.WriteLine("Je crée mon premier point");
-            Point2D p2 = new Point2D();
-            p2.SetX(23);
-            p2.SetY(25);
+            Console.WriteLine("Je crée mon deuxieme point");
+            Point2D p2 = new Point2D(23, 26);            
             p2.Afficher();
             p2.Translate(10, 60);
             p2.Afficher();
 
 
-
-            Point2DBis p3 = new Point2DBis();
-            p3.Y = 110;
+            Console.WriteLine("Je crée mon troisieme point");
+            Point3D p3 = new Point3D(23, 26, 65);
+            p3.Afficher();
+            p3.Translate(10, 60, 65);
+            p3.Afficher();
 
             Console.ReadLine();
 

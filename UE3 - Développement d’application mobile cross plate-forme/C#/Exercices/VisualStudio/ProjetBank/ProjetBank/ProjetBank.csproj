@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7478869A-7999-4C35-8C7A-D65493C8B212}</ProjectGuid>
+    <ProjectGuid>{BE89211E-4569-4D95-BF2A-C4DC1166A79B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Point2D</RootNamespace>
-    <AssemblyName>Point2D</AssemblyName>
+    <RootNamespace>ProjetBank</RootNamespace>
+    <AssemblyName>ProjetBank</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,9 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Point2D.cs" />
-    <Compile Include="Point2DBis.cs" />
-    <Compile Include="Point3D.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="Compte.cs" />
+    <Compile Include="CompteASeuil.cs" />
+    <Compile Include="CompteRemunere.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
