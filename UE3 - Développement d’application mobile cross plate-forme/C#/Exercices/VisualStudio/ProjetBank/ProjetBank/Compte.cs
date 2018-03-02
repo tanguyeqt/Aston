@@ -14,12 +14,13 @@ namespace ProjetBank
         
         public Compte()
         {
-
+            this.numero = -1;
+            this.solde = 0;
         }
 
-        public Compte(int numero, double solde)
+        public Compte(int numero, double unSoldeInitial)
         {
-            this.solde = solde;
+            this.setSolde(unSoldeInitial);
             this.numero = numero;
         }
 

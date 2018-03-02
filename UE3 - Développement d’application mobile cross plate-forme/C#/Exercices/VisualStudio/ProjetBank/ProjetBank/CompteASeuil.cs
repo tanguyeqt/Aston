@@ -6,37 +6,53 @@ using System.Threading.Tasks;
 
 namespace ProjetBank
 {
-    class CompteASeuil:Compte
+    class CompteASeuil:Compte,ICompteASeuil
     {
 
         double seuil;
 
-
-        public CompteASeuil(double seuil)
+        public CompteASeuil()
         {
-            this.seuil = seuil;
+            this.seuil = 0;
+            this.numero = -1;
+            this.solde = 0;
         }
 
+        public CompteASeuil(double seuil, double unSoldeInitial, int numero)
+        {
+            this.seuil = seuil;
+            this.solde = unSoldeInitial;
+            this.numero = numero;
+        }
 
+      
+        public double getSeuil()
+        {
+            return this.seuil;
+        }
+
+       
+        public void setSeuil(double unSeuil)
+        {
+            this.seuil = unSeuil;
+        }
 
         public String toString()
         {
-            return "Compte Epargne" + toString() + "seuil=" + seuil;
+            return "Compte Epargne" + toString() + "seuil=" + this.getSeuil();
         }
 
 
-        public void retirer(double uneValeur)
+        public void retirer(double unMontant) 
         {
-            if(solde + uneValeur > seuil)
-            {
-                setSolde(getSolde() - uneValeur);
-            }
-            else
-            {
-                Console.WriteLine("Impossible de retirer");
 
-            }
-        }
+        double simu = this.getSolde() - unMontant;
+		if (simu <= this.getSeuil()) {
+			
+    } else {
+			retirer(unMontant);
+		}
+	}
 
 
 

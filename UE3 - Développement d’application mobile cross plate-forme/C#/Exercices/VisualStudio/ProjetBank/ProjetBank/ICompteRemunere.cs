@@ -9,12 +9,15 @@ namespace ProjetBank
     interface ICompteRemunere
     {
 
-        public double calculerInterets()
-        {
-
-        }
 
 
+        double calculInterets();        
+        
+        void verserInterets();
+
+        double getTaux();
+       
+        void setTaux(double taux);
 
     }
 }

@@ -11,30 +11,33 @@ namespace ProjetBank
         static void Main(string[] args)
         {
 
-            Compte c1 = new Compte(1, 100);
-            c1.Afficher();
-            c1.ajouter(1500);
-            c1.Afficher();
+            Client client = new Client(1, "Dupont", "Henry", 28);
+            // Creation des comptes
+            Compte c0 = new Compte(0, 200);
+            Compte c1 = new Compte(1, 1000);
+            CompteASeuil c2 = new CompteASeuil(2, 4600, 100);
+            CompteRemunere c3 = new CompteRemunere(3, 400, 0.10);
+            CompteRemunere c4 = new CompteRemunere(4, 600, 0.50);
+            
+                client.ajouterCompte(c0);
+                client.ajouterCompte(c1);
+                client.ajouterCompte(c2);
+                client.ajouterCompte(c3);
+                client.ajouterCompte(c4);
 
-
-            Client cl1 = new Client("Equinet", "Tanguy", 21, 1);
-
-
-            CompteRemunere cr1 = new CompteRemunere(1.2, 1, 100);
-
-            cr1.calculInterets();
-            cr1.verserInterets();
 
             
-
-
-            Console.ReadLine();
-
-            
+           
+                
           
 
-
-
         }
+
     }
+
+
+
+
+
 }
+ 

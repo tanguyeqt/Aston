@@ -6,36 +6,54 @@ using System.Threading.Tasks;
 
 namespace ProjetBank
 {
-    class CompteRemunere : Compte
+    class CompteRemunere : Compte, ICompteRemunere 
     {
 
 
         double taux;
+        public CompteRemunere()
+        {
+            this.solde = 0;
+            this.numero = -1;
+            this.taux = 0;
+        }
 
-
-        public CompteRemunere(double taux, int numero, double solde)
+        public CompteRemunere(double taux, int numero, double unSoldeInitial)
         {
             this.taux = taux;
-            this.solde = solde;
+            this.solde = unSoldeInitial;
             this.numero = numero;
 
         }
 
-        public void calculInterets()
+
+        public double getTaux()
         {
-            solde = solde * (1 + taux / 100);
+            return this.taux;
+        }
+
+        
+        public void setTaux(double taux)
+        {
+           
+            this.taux = taux;
+        }
+
+        public double calculInterets()
+        {
+            return getSolde() * this.getTaux();
         }
 
 
         public void verserInterets()
         {
-            this.setSolde(this.getSolde() + solde);
+            ajouter(this.calculInterets());
         }
 
 
         public String toString()
         {
-            return "Compte Epargne" + toString() + "taux=" + taux;
+            return "Compte Epargne" + toString() + "taux=" + this.getTaux();
         }
 
 

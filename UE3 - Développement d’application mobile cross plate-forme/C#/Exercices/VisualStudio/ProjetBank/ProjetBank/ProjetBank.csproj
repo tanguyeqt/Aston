@@ -42,10 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BanqueException.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Compte.cs" />
     <Compile Include="CompteASeuil.cs" />
     <Compile Include="CompteRemunere.cs" />
+    <Compile Include="ICompteASeuil.cs" />
+    <Compile Include="ICompteRemunere.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

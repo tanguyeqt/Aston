@@ -17,15 +17,24 @@ namespace ProjetBank
 
 
 
-        public Client(string nom, string prenom, int age, int numero)
+        public Client()
         {
-            this.tabCompte = tabCompte;
-            this.nom = nom;
-            this.prenom = prenom;
-            this.age = age;
-            this.numero = numero;
-        }
+            this.prenom = null;
+            this.nom = null;
+            this.numero = -1;
+            this.age = 0;
 
+        }
+          
+        public Client(int unNumero, String unNom, String unPrenom, int unAge)
+        {
+           
+            this.setNom(unNom);
+            this.setPrenom(unPrenom);
+            this.setAge(unAge);         
+            this.tabCompte = new Compte[5];
+            this.setNumero(unNumero);
+        }
 
         public string getNom()
         {
@@ -55,7 +64,7 @@ namespace ProjetBank
             return age;
         }
 
-        public void setAge()
+        public void setAge(int age)
         {
             this.age = age;
         }
@@ -118,25 +127,23 @@ namespace ProjetBank
             }
         }
 
-
-        public Compte getCompte(int numeroCompte)
+        public Compte getCompte(int unNumero)
         {
-
-            for (int i = 0; i <numeroCompte; i++)
+            for (int i = 0; i < this.tabCompte.Length; i++)
             {
-                if()
+                if (this.tabCompte[i] != null && this.tabCompte[i].getNumero() == unNumero)
                 {
-
+                    return this.tabCompte[i];
                 }
             }
-
-
-
+            return null;
         }
 
 
-     
-      
+
+
+
+
 
 
 
