@@ -15,9 +15,7 @@ namespace ProjetBank
         
         void verserInterets();
 
-        double getTaux();
-       
-        void setTaux(double taux);
+        double Taux { get; }
 
     }
 }

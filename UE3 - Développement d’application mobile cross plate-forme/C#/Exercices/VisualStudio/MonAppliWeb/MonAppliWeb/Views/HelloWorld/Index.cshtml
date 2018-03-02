@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MonAppliWeb.Models.Movie>
+
+<h2>@ViewBag.Title</h2>
+<table>
+    <thead>
+    <th>Titres</th>
+    <th>Genre</th>
+    <th>Prix</th>
+    <th>Date de sortie</th>
+    </thead>
+
+
+    @foreach (var item in Model)
+    {
+
+
+
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+
+            <td>@Html.DisplayFor(modelItem => item.Genre)</td>
+
+            <td>@Html.DisplayFor(modelItem => item.Price)</td>
+
+            <td>@Html.DisplayFor(modelItem => item.RelaseDate)</td>
+        </tr>
+    }
+
+
+</table>
+

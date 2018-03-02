@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjetBank
 {
-    class CompteASeuil:Compte,ICompteASeuil
+    class CompteASeuil: Compte,ICompteASeuil
     {
 
         double seuil;
@@ -25,21 +25,12 @@ namespace ProjetBank
             this.numero = numero;
         }
 
-      
-        public double getSeuil()
-        {
-            return this.seuil;
-        }
 
-       
-        public void setSeuil(double unSeuil)
-        {
-            this.seuil = unSeuil;
-        }
+        public double Seuil { get; private set;  }
 
         public String toString()
         {
-            return "Compte Epargne" + toString() + "seuil=" + this.getSeuil();
+            return "Compte Epargne" + toString() + "seuil=" + this.Seuil;
         }
 
 
@@ -47,7 +38,7 @@ namespace ProjetBank
         {
 
         double simu = this.getSolde() - unMontant;
-		if (simu <= this.getSeuil()) {
+		if (simu <= this.Seuil) {
 			
     } else {
 			retirer(unMontant);

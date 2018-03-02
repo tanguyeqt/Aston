@@ -11,10 +11,8 @@ namespace ProjetBank
 
 
         void retirer(double unMontant);
-        
-        double getSeuil();
 
-        void setSeuil(double unSeuil);
+        double Seuil { get; }
 
 
     }
